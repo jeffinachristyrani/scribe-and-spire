@@ -60,6 +60,22 @@ function App() {
             }
           />
           <Route
+            path="/author/dashboard"
+            element={
+              <ProtectedRoute authorOnly={true}>
+                <AuthorDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/author/studio"
+            element={
+              <ProtectedRoute authorOnly={true}>
+                <AuthorDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/author/books"
             element={
               <ProtectedRoute authorOnly={true}>
