@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Database / SQLite / Temp
+*.sqlite3
+*.sqlite
+*.db
+
+# Archives & Deliverables
+*.zip
+*.tar.gz
+*.tgz
+
+# Large Raw Training Datasets (Trained model genre_classifier.joblib is preserved for inference)
+ml/classification/booksummaries/
+booksummaries/
+booksummaries.tar.gz
+ml/classification/booksummaries.tar.gz
+
+# Logs & Scratch
+*.log
+logs/
+*.bak
+*.tmp
