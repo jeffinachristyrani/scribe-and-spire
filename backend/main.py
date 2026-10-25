@@ -58,7 +58,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS middleware for local frontend development
+# CORS middleware for local frontend development and cloud deployment
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
@@ -67,9 +67,17 @@ origins = [
     "http://localhost:3000",
 ]
 
+frontend_env = os.getenv("FRONTEND_URL")
+if frontend_env:
+    for url in frontend_env.split(","):
+        cleaned = url.strip()
+        if cleaned and cleaned not in origins:
+            origins.append(cleaned)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex=r"^https:\/\/.*\.vercel\.app$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

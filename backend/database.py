@@ -4,16 +4,18 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 
-# Load environment variables (.env.local overrides for local testing if present)
+# Load environment variables (.env.local overrides for local testing if DATABASE_URL not explicitly set)
 local_env = os.path.join(os.path.dirname(__file__), ".env.local")
-if os.path.isfile(local_env):
-    load_dotenv(local_env, override=True)
+if "DATABASE_URL" not in os.environ and os.path.isfile(local_env):
+    load_dotenv(local_env)
 load_dotenv()
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
     "postgresql+psycopg://postgres:postgres@localhost:5432/elibrary"
 )
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
 
 # SQLite fallback support for local unit testing without active PostgreSQL server
 connect_args = {}
@@ -24,6 +26,7 @@ engine = create_engine(
     DATABASE_URL,
     connect_args=connect_args,
     pool_pre_ping=True,
+    pool_recycle=300,
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

@@ -63,8 +63,6 @@ booksummaries/
 booksummaries.tar.gz
 ml/classification/booksummaries.tar.gz
 
-# Logs & Scratch
-*.log
-logs/
-*.bak
-*.tmp
+# Cloud CLI configuration
+.neon
+.vercel
