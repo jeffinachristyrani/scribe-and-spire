@@ -66,3 +66,4 @@ ml/classification/booksummaries.tar.gz
 # Cloud CLI configuration
 .neon
 .vercel
+scratch/
