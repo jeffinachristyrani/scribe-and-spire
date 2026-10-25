@@ -17,6 +17,7 @@ The platform incorporates four distinct analytical modules implemented in Python
 $$S(b) = \sum_{u \in \mathcal{N}_k} (1 - d_{\text{cosine}}(t, u)) \cdot \left(\frac{P_{u,b}}{100}\right) \cdot \left(\frac{R_{u,b}}{5}\right)$$
 
 where $d_{\text{cosine}}(t, u)$ is the cosine distance between target user $t$ and neighbor $u$, $P_{u,b}$ is completion progress, and $R_{u,b}$ is the explicit rating.
+
 4. **Supervised Genre Classification:** Pretrained TF-IDF vectorizer (20,000 features, unigram + bigram) paired with multi-class Logistic Regression trained on the CMU Book Summary Dataset across 143 genre classes for automated tagging.
 
 | Pipeline | Model / Algorithm | Input Dimensions | Primary Output | Dataset / Source | Evaluation Metrics |
